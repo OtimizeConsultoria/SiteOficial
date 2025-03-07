@@ -1,24 +1,10 @@
+import Link from 'next/link';
 import React from 'react'
+import { projects } from "@/data/projects";
+import Image from 'next/image';
 
 const Projetos = () => {
 
-    const projects = [
-        {
-          title: "Otimização de Processos",
-          description: "Redução de 30% no tempo de produção para indústria têxtil",
-          image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=800&q=80",
-        },
-        {
-          title: "Gestão de Qualidade",
-          description: "Implementação de sistema ISO 9001 em empresa de médio porte",
-          image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-        },
-        {
-          title: "Planejamento Estratégico",
-          description: "Desenvolvimento de plano estratégico para startup em crescimento",
-          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-        },
-      ];
 
     return (
         <>
@@ -27,14 +13,17 @@ const Projetos = () => {
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
                         Nossos Projetos
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap justify-center gap-16">
                         {projects.map((project, index) => (
-                            <div
+                            <Link
                                 key={index}
-                                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-fade-up"
+                                href={`/projetos/${project.id}`}
+                                className="w-96 bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-fade-up"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
-                                <img
+                                <Image
+                                    width={500}
+                                    height={500}
                                     src={project.image}
                                     alt={project.title}
                                     className="w-full h-48 object-cover"
@@ -43,7 +32,7 @@ const Projetos = () => {
                                     <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                                     <p className="text-gray-600">{project.description}</p>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

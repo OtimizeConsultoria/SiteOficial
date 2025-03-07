@@ -1,9 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { motion } from 'framer-motion';
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
-
 
 const AboutUs = () => {
     const images = [
@@ -42,9 +40,9 @@ const AboutUs = () => {
     return (
         <>
             <section id="sobre" className="py-16">
-                <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6">
+                <div className="container mx-auto px-4 ">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 ">
+                        <div className="space-y-6 flex flex-col items-center md:items-start text-center md:text-start">
                             <h2 className="text-3xl md:text-4xl font-bold">Sobre Nós</h2>
                             <p className="text-gray-600 leading-relaxed">
                                 Somos uma empresa júnior de Engenharia de Produção comprometida em
@@ -67,28 +65,15 @@ const AboutUs = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="relative w-full aspect-[16/9] overflow-hidden">
+                        <div className="relative w-full aspect-[16/9] overflow-hidden  ">
                             {images.map((image, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: index === currentImage ? 1 : 0 }}
-                                    transition={{ duration: 1, ease: "easeInOut" }}
-                                    style={{
-                                        position: 'absolute',
-                                        inset: 0,
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                    }}
+                                    className={`absolute inset-0 w-full h-full flex justify-center items-center md:justify-start transition-opacity duration-1000 ease-in-out ${index === currentImage ? "opacity-100" : "opacity-0"
+                                        }`}
                                 >
-                                    <Image
-                                        src={image.src}
-                                        alt={image.alt}
-                                        width={500}
-                                        height={500}
-                                    />
-                                </motion.div>
+                                    <Image src={image.src} alt={image.alt} width={500} height={500} />
+                                </div>
                             ))}
 
                         </div>
